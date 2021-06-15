@@ -33,7 +33,7 @@ public class PersonDao {
     }
 
     public Person read(int id) {
-        return null;
+        return personList.get(id);
     }
 
     public List<Person> read() {

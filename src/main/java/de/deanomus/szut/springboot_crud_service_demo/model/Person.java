@@ -15,4 +15,9 @@ public class Person {
         this.surname = surname;
     }
 
+
+    public String toString() {
+        return "PERSON, ID: " + this.id + ", Name: " + this.firstname + " " + this.surname;
+    }
+
 }

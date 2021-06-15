@@ -2,6 +2,7 @@ package de.deanomus.szut.springboot_crud_service_demo.controller;
 
 import de.deanomus.szut.springboot_crud_service_demo.dao.PersonDao;
 import de.deanomus.szut.springboot_crud_service_demo.model.Person;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,7 @@ public class PersonController {
             produces = { MediaType.APPLICATION_JSON_VALUE }
     )
     public @ResponseBody ResponseEntity<Person> getPersonByParam(@RequestParam("id") int id) {
-        Person personRead = personDao.read(id);
-
-        if (personRead == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(personRead);
-        }
+        return getPerson(id);
     }
 
 
@@ -36,13 +31,7 @@ public class PersonController {
             produces = { MediaType.APPLICATION_JSON_VALUE }
     )
     public @ResponseBody ResponseEntity<Person> getPersonByUrl(@RequestParam("id") int id) {
-        Person personRead = personDao.read(id);
-
-        if (personRead == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(personRead);
-        }
+        return getPerson(id);
     }
 
     @GetMapping(
@@ -50,9 +39,15 @@ public class PersonController {
             produces = { MediaType.APPLICATION_JSON_VALUE }
     )
     public @ResponseBody ResponseEntity<List<Person>> getAllPersons(@RequestParam("id") int id) {
+        // LoggerFactory.getLogger().info("hallo");
+
+        LoggerFactory.getLogger("").info("hallo");
+
+        System.out.println("hallo");
+
         List<Person> personListRead = personDao.read();
 
-        if (personListRead == null && false) {
+        if (personListRead == null) {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(personListRead);
@@ -122,6 +117,17 @@ public class PersonController {
     )
     public @ResponseBody ResponseEntity<String> getWelcomeMessage() {
         return ResponseEntity.ok("Dies ist ein Schulprojekt des Schulzentrums Utbremen");
+    }
+
+
+    private ResponseEntity<Person> getPerson(int id) {
+        Person personRead = personDao.read(id);
+
+        if (personRead == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(personRead);
+        }
     }
 
 }
