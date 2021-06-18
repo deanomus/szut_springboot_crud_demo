@@ -25,10 +25,12 @@ public class PersonDao {
         personList.put(2, new Person(2, "Dean", "Reinhardt"));
         personList.put(3, new Person(3, "Mercedes", "AMG"));
         personList.put(4, new Person(4, "Bernd", "Heidemann"));
-        personList.put(4, new Person(4, "Dilara", "Doener"));
+        personList.put(5, new Person(5, "Dilara", "Doener"));
     }
 
     public Person create(Person person) {
+        personList.put(person.getId(), person);
+
         return person;
     }
 
@@ -42,10 +44,12 @@ public class PersonDao {
     }
 
     public Person update(Person person) {
+        personList.put(person.getId(), person);
+
         return person;
     }
 
     public void delete(int id) {
-
+        personList.remove(id);
     }
 }
