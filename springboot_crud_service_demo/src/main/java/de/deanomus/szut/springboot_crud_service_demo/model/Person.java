@@ -9,6 +9,10 @@ public class Person {
             firstname,
             surname;
 
+    public Person() {
+
+    }
+
     public Person(int id, String firstname, String surname) {
         this.id = id;
         this.firstname = firstname;
@@ -20,4 +24,31 @@ public class Person {
         return "PERSON, ID: " + this.id + ", Name: " + this.firstname + " " + this.surname;
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public Person setId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public Person setFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public Person setSurname(String surname) {
+        this.surname = surname;
+        return this;
+    }
 }

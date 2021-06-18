@@ -38,12 +38,7 @@ public class PersonController {
             value = "/SpringBootCrudService/allpersons",
             produces = { MediaType.APPLICATION_JSON_VALUE }
     )
-    public @ResponseBody ResponseEntity<List<Person>> getAllPersons(@RequestParam("id") int id) {
-        // LoggerFactory.getLogger().info("hallo");
-
-        LoggerFactory.getLogger("").info("hallo");
-
-        System.out.println("hallo");
+    public @ResponseBody ResponseEntity<List<Person>> getAllPersons() {
 
         List<Person> personListRead = personDao.read();
 
