@@ -31,8 +31,14 @@ public class GuestbookEntryService {
         return repository.findById(id).get();
     }
 
-    public GuestbookEntry update() {
-        return null; //TODO: finish this method
+    public GuestbookEntry update(GuestbookEntry guestbookEntry) {
+        GuestbookEntry serializedGuestbookEntry = readById(guestbookEntry.getId());
+
+        serializedGuestbookEntry.setTitle(guestbookEntry.getTitle());
+        serializedGuestbookEntry.setComment(guestbookEntry.getComment());
+        serializedGuestbookEntry.setCommenter(guestbookEntry.getCommenter());
+
+        return repository.save(serializedGuestbookEntry);
     }
 
 }
